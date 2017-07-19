@@ -79,9 +79,11 @@ def num2DigitToString(num):
 # Converts a 3-digit number to a string
 def num3DigitToString(num):
     if num[1] == "0" and num[2] == "0":
-        return str(num1DigitToString(num[0])) + " hundred"
+        return num1DigitToString(num[0]) + " hundred"
+    elif num[1] == "0":
+        return num1DigitToString(num[0]) + " hundred and " + num1DigitToString(num[2])
     else:
-        return str(num1DigitToString(num[0])) + " hundred and " + str(num2DigitToString(num[1:3]))
+        return num1DigitToString(num[0]) + " hundred and " + num2DigitToString(num[1:3])
 
 # Converts number from 1 to 1000 inclusive, to a string
 def numToString(num):
@@ -106,5 +108,6 @@ numLetters = 0
 for i in range(1, 1001):
     i = str(i)
     numLetters += len(removeSpacesHyphens(numToString(i)))
+    print(numToString(i))
 
 print(numLetters)
